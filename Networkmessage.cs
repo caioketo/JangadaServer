@@ -6,84 +6,519 @@ using pb = global::Google.ProtocolBuffers;
 using pbc = global::Google.ProtocolBuffers.Collections;
 using pbd = global::Google.ProtocolBuffers.Descriptors;
 using scg = global::System.Collections.Generic;
-namespace JangadaServer {
+namespace Jangada {
   
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public static partial class Networkmessage {
-  
-    #region Extension registration
-    public static void RegisterAllExtensions(pb::ExtensionRegistry registry) {
-    }
-    #endregion
-    #region Static variables
-    internal static pbd::MessageDescriptor internal__static_JangadaServer_LoginPacket__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::JangadaServer.LoginPacket, global::JangadaServer.LoginPacket.Builder> internal__static_JangadaServer_LoginPacket__FieldAccessorTable;
-    internal static pbd::MessageDescriptor internal__static_JangadaServer_LogoutPacket__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::JangadaServer.LogoutPacket, global::JangadaServer.LogoutPacket.Builder> internal__static_JangadaServer_LogoutPacket__FieldAccessorTable;
-    internal static pbd::MessageDescriptor internal__static_JangadaServer_ChatPacket__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::JangadaServer.ChatPacket, global::JangadaServer.ChatPacket.Builder> internal__static_JangadaServer_ChatPacket__FieldAccessorTable;
-    internal static pbd::MessageDescriptor internal__static_JangadaServer_NetworkMessage__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::JangadaServer.NetworkMessage, global::JangadaServer.NetworkMessage.Builder> internal__static_JangadaServer_NetworkMessage__FieldAccessorTable;
-    internal static pbd::MessageDescriptor internal__static_JangadaServer_Messages__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::JangadaServer.Messages, global::JangadaServer.Messages.Builder> internal__static_JangadaServer_Messages__FieldAccessorTable;
-    #endregion
-    #region Descriptor
-    public static pbd::FileDescriptor Descriptor {
-      get { return descriptor; }
-    }
-    private static pbd::FileDescriptor descriptor;
+  namespace Proto {
     
-    static Networkmessage() {
-      byte[] descriptorData = global::System.Convert.FromBase64String(
-          "ChRuZXR3b3JrbWVzc2FnZS5wcm90bxINSmFuZ2FkYVNlcnZlciIxCgtMb2dp" + 
-          "blBhY2tldBIQCgh1c2VyTmFtZRgBIAIoCRIQCghwYXNzd29yZBgCIAIoCSIc" + 
-          "CgxMb2dvdXRQYWNrZXQSDAoEcXVpdBgBIAIoCCIdCgpDaGF0UGFja2V0Eg8K" + 
-          "B21lc3NhZ2UYASACKAki/gEKDk5ldHdvcmtNZXNzYWdlEjAKBHR5cGUYASAC" + 
-          "KA4yIi5KYW5nYWRhU2VydmVyLk5ldHdvcmtNZXNzYWdlLlR5cGUSLwoLbG9n" + 
-          "aW5QYWNrZXQYAiABKAsyGi5KYW5nYWRhU2VydmVyLkxvZ2luUGFja2V0EjEK" + 
-          "DGxvZ291dFBhY2tldBgDIAEoCzIbLkphbmdhZGFTZXJ2ZXIuTG9nb3V0UGFj" + 
-          "a2V0Ei0KCmNoYXRQYWNrZXQYBCABKAsyGS5KYW5nYWRhU2VydmVyLkNoYXRQ" + 
-          "YWNrZXQiJwoEVHlwZRIJCgVMT0dJThABEgoKBkxPR09VVBACEggKBENIQVQQ" + 
-          "AyJBCghNZXNzYWdlcxI1Cg5uZXR3b3JrbWVzc2FnZRgBIAMoCzIdLkphbmdh" + 
-          "ZGFTZXJ2ZXIuTmV0d29ya01lc3NhZ2VCAkgB");
-      pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
-        descriptor = root;
-        internal__static_JangadaServer_LoginPacket__Descriptor = Descriptor.MessageTypes[0];
-        internal__static_JangadaServer_LoginPacket__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::JangadaServer.LoginPacket, global::JangadaServer.LoginPacket.Builder>(internal__static_JangadaServer_LoginPacket__Descriptor,
-                new string[] { "UserName", "Password", });
-        internal__static_JangadaServer_LogoutPacket__Descriptor = Descriptor.MessageTypes[1];
-        internal__static_JangadaServer_LogoutPacket__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::JangadaServer.LogoutPacket, global::JangadaServer.LogoutPacket.Builder>(internal__static_JangadaServer_LogoutPacket__Descriptor,
-                new string[] { "Quit", });
-        internal__static_JangadaServer_ChatPacket__Descriptor = Descriptor.MessageTypes[2];
-        internal__static_JangadaServer_ChatPacket__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::JangadaServer.ChatPacket, global::JangadaServer.ChatPacket.Builder>(internal__static_JangadaServer_ChatPacket__Descriptor,
-                new string[] { "Message", });
-        internal__static_JangadaServer_NetworkMessage__Descriptor = Descriptor.MessageTypes[3];
-        internal__static_JangadaServer_NetworkMessage__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::JangadaServer.NetworkMessage, global::JangadaServer.NetworkMessage.Builder>(internal__static_JangadaServer_NetworkMessage__Descriptor,
-                new string[] { "Type", "LoginPacket", "LogoutPacket", "ChatPacket", });
-        internal__static_JangadaServer_Messages__Descriptor = Descriptor.MessageTypes[4];
-        internal__static_JangadaServer_Messages__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::JangadaServer.Messages, global::JangadaServer.Messages.Builder>(internal__static_JangadaServer_Messages__Descriptor,
-                new string[] { "Networkmessage", });
-        return null;
-      };
-      pbd::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
-          new pbd::FileDescriptor[] {
-          }, assigner);
-    }
-    #endregion
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public static partial class Networkmessage {
     
+      #region Extension registration
+      public static void RegisterAllExtensions(pb::ExtensionRegistry registry) {
+      }
+      #endregion
+      #region Static variables
+      internal static pbd::MessageDescriptor internal__static_Jangada_Networkmessage__Descriptor;
+      internal static pb::FieldAccess.FieldAccessorTable<global::Jangada.Networkmessage, global::Jangada.Networkmessage.Builder> internal__static_Jangada_Networkmessage__FieldAccessorTable;
+      internal static pbd::MessageDescriptor internal__static_Jangada_LoginPacket__Descriptor;
+      internal static pb::FieldAccess.FieldAccessorTable<global::Jangada.LoginPacket, global::Jangada.LoginPacket.Builder> internal__static_Jangada_LoginPacket__FieldAccessorTable;
+      internal static pbd::MessageDescriptor internal__static_Jangada_Character__Descriptor;
+      internal static pb::FieldAccess.FieldAccessorTable<global::Jangada.Character, global::Jangada.Character.Builder> internal__static_Jangada_Character__FieldAccessorTable;
+      internal static pbd::MessageDescriptor internal__static_Jangada_CharactersPacket__Descriptor;
+      internal static pb::FieldAccess.FieldAccessorTable<global::Jangada.CharactersPacket, global::Jangada.CharactersPacket.Builder> internal__static_Jangada_CharactersPacket__FieldAccessorTable;
+      internal static pbd::MessageDescriptor internal__static_Jangada_Messages__Descriptor;
+      internal static pb::FieldAccess.FieldAccessorTable<global::Jangada.Messages, global::Jangada.Messages.Builder> internal__static_Jangada_Messages__FieldAccessorTable;
+      #endregion
+      #region Descriptor
+      public static pbd::FileDescriptor Descriptor {
+        get { return descriptor; }
+      }
+      private static pbd::FileDescriptor descriptor;
+      
+      static Networkmessage() {
+        byte[] descriptorData = global::System.Convert.FromBase64String(
+            "ChROZXR3b3JrbWVzc2FnZS5wcm90bxIHSmFuZ2FkYSK/AQoOTmV0d29ya21l" + 
+            "c3NhZ2USKgoEdHlwZRgBIAIoDjIcLkphbmdhZGEuTmV0d29ya21lc3NhZ2Uu" + 
+            "VHlwZRIpCgtsb2dpblBhY2tldBgCIAEoCzIULkphbmdhZGEuTG9naW5QYWNr" + 
+            "ZXQSMwoQY2hhcmFjdGVyc1BhY2tldBgDIAEoCzIZLkphbmdhZGEuQ2hhcmFj" + 
+            "dGVyc1BhY2tldCIhCgRUeXBlEgkKBUxPR0lOEAASDgoKQ0hBUkFDVEVSUxAB" + 
+            "Ii4KC0xvZ2luUGFja2V0Eg0KBWxvZ2luGAEgAigJEhAKCHBhc3N3b3JkGAIg" + 
+            "AigJIjMKCUNoYXJhY3RlchIKCgJpZBgBIAIoBRIMCgRuYW1lGAIgAigJEgwK" + 
+            "BGluZm8YAyACKAkiPQoQQ2hhcmFjdGVyc1BhY2tldBIpCg1DaGFyYWN0ZXJM" + 
+            "aXN0GAEgAygLMhIuSmFuZ2FkYS5DaGFyYWN0ZXIiOwoITWVzc2FnZXMSLwoO" + 
+            "TmV0d29ya21lc3NhZ2UYASADKAsyFy5KYW5nYWRhLk5ldHdvcmttZXNzYWdl" + 
+            "QgJIAQ==");
+        pbd::FileDescriptor.InternalDescriptorAssigner assigner = delegate(pbd::FileDescriptor root) {
+          descriptor = root;
+          internal__static_Jangada_Networkmessage__Descriptor = Descriptor.MessageTypes[0];
+          internal__static_Jangada_Networkmessage__FieldAccessorTable = 
+              new pb::FieldAccess.FieldAccessorTable<global::Jangada.Networkmessage, global::Jangada.Networkmessage.Builder>(internal__static_Jangada_Networkmessage__Descriptor,
+                  new string[] { "Type", "LoginPacket", "CharactersPacket", });
+          internal__static_Jangada_LoginPacket__Descriptor = Descriptor.MessageTypes[1];
+          internal__static_Jangada_LoginPacket__FieldAccessorTable = 
+              new pb::FieldAccess.FieldAccessorTable<global::Jangada.LoginPacket, global::Jangada.LoginPacket.Builder>(internal__static_Jangada_LoginPacket__Descriptor,
+                  new string[] { "Login", "Password", });
+          internal__static_Jangada_Character__Descriptor = Descriptor.MessageTypes[2];
+          internal__static_Jangada_Character__FieldAccessorTable = 
+              new pb::FieldAccess.FieldAccessorTable<global::Jangada.Character, global::Jangada.Character.Builder>(internal__static_Jangada_Character__Descriptor,
+                  new string[] { "Id", "Name", "Info", });
+          internal__static_Jangada_CharactersPacket__Descriptor = Descriptor.MessageTypes[3];
+          internal__static_Jangada_CharactersPacket__FieldAccessorTable = 
+              new pb::FieldAccess.FieldAccessorTable<global::Jangada.CharactersPacket, global::Jangada.CharactersPacket.Builder>(internal__static_Jangada_CharactersPacket__Descriptor,
+                  new string[] { "CharacterList", });
+          internal__static_Jangada_Messages__Descriptor = Descriptor.MessageTypes[4];
+          internal__static_Jangada_Messages__FieldAccessorTable = 
+              new pb::FieldAccess.FieldAccessorTable<global::Jangada.Messages, global::Jangada.Messages.Builder>(internal__static_Jangada_Messages__Descriptor,
+                  new string[] { "Networkmessage", });
+          return null;
+        };
+        pbd::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
+            new pbd::FileDescriptor[] {
+            }, assigner);
+      }
+      #endregion
+      
+    }
   }
   #region Messages
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class Networkmessage : pb::GeneratedMessage<Networkmessage, Networkmessage.Builder> {
+    private Networkmessage() { }
+    private static readonly Networkmessage defaultInstance = new Networkmessage().MakeReadOnly();
+    private static readonly string[] _networkmessageFieldNames = new string[] { "charactersPacket", "loginPacket", "type" };
+    private static readonly uint[] _networkmessageFieldTags = new uint[] { 26, 18, 8 };
+    public static Networkmessage DefaultInstance {
+      get { return defaultInstance; }
+    }
+    
+    public override Networkmessage DefaultInstanceForType {
+      get { return DefaultInstance; }
+    }
+    
+    protected override Networkmessage ThisMessage {
+      get { return this; }
+    }
+    
+    public static pbd::MessageDescriptor Descriptor {
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_Networkmessage__Descriptor; }
+    }
+    
+    protected override pb::FieldAccess.FieldAccessorTable<Networkmessage, Networkmessage.Builder> InternalFieldAccessors {
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_Networkmessage__FieldAccessorTable; }
+    }
+    
+    #region Nested types
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public static partial class Types {
+      public enum Type {
+        LOGIN = 0,
+        CHARACTERS = 1,
+      }
+      
+    }
+    #endregion
+    
+    public const int TypeFieldNumber = 1;
+    private bool hasType;
+    private global::Jangada.Networkmessage.Types.Type type_ = global::Jangada.Networkmessage.Types.Type.LOGIN;
+    public bool HasType {
+      get { return hasType; }
+    }
+    public global::Jangada.Networkmessage.Types.Type Type {
+      get { return type_; }
+    }
+    
+    public const int LoginPacketFieldNumber = 2;
+    private bool hasLoginPacket;
+    private global::Jangada.LoginPacket loginPacket_;
+    public bool HasLoginPacket {
+      get { return hasLoginPacket; }
+    }
+    public global::Jangada.LoginPacket LoginPacket {
+      get { return loginPacket_ ?? global::Jangada.LoginPacket.DefaultInstance; }
+    }
+    
+    public const int CharactersPacketFieldNumber = 3;
+    private bool hasCharactersPacket;
+    private global::Jangada.CharactersPacket charactersPacket_;
+    public bool HasCharactersPacket {
+      get { return hasCharactersPacket; }
+    }
+    public global::Jangada.CharactersPacket CharactersPacket {
+      get { return charactersPacket_ ?? global::Jangada.CharactersPacket.DefaultInstance; }
+    }
+    
+    public override bool IsInitialized {
+      get {
+        if (!hasType) return false;
+        if (HasLoginPacket) {
+          if (!LoginPacket.IsInitialized) return false;
+        }
+        if (HasCharactersPacket) {
+          if (!CharactersPacket.IsInitialized) return false;
+        }
+        return true;
+      }
+    }
+    
+    public override void WriteTo(pb::ICodedOutputStream output) {
+      int size = SerializedSize;
+      string[] field_names = _networkmessageFieldNames;
+      if (hasType) {
+        output.WriteEnum(1, field_names[2], (int) Type, Type);
+      }
+      if (hasLoginPacket) {
+        output.WriteMessage(2, field_names[1], LoginPacket);
+      }
+      if (hasCharactersPacket) {
+        output.WriteMessage(3, field_names[0], CharactersPacket);
+      }
+      UnknownFields.WriteTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public override int SerializedSize {
+      get {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+        
+        size = 0;
+        if (hasType) {
+          size += pb::CodedOutputStream.ComputeEnumSize(1, (int) Type);
+        }
+        if (hasLoginPacket) {
+          size += pb::CodedOutputStream.ComputeMessageSize(2, LoginPacket);
+        }
+        if (hasCharactersPacket) {
+          size += pb::CodedOutputStream.ComputeMessageSize(3, CharactersPacket);
+        }
+        size += UnknownFields.SerializedSize;
+        memoizedSerializedSize = size;
+        return size;
+      }
+    }
+    
+    public static Networkmessage ParseFrom(pb::ByteString data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(byte[] data) {
+      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(global::System.IO.Stream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    public static Networkmessage ParseDelimitedFrom(global::System.IO.Stream input) {
+      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
+    }
+    public static Networkmessage ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(pb::ICodedInputStream input) {
+      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
+    }
+    public static Networkmessage ParseFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
+    }
+    private Networkmessage MakeReadOnly() {
+      return this;
+    }
+    
+    public static Builder CreateBuilder() { return new Builder(); }
+    public override Builder ToBuilder() { return CreateBuilder(this); }
+    public override Builder CreateBuilderForType() { return new Builder(); }
+    public static Builder CreateBuilder(Networkmessage prototype) {
+      return new Builder(prototype);
+    }
+    
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public sealed partial class Builder : pb::GeneratedBuilder<Networkmessage, Builder> {
+      protected override Builder ThisBuilder {
+        get { return this; }
+      }
+      public Builder() {
+        result = DefaultInstance;
+        resultIsReadOnly = true;
+      }
+      internal Builder(Networkmessage cloneFrom) {
+        result = cloneFrom;
+        resultIsReadOnly = true;
+      }
+      
+      private bool resultIsReadOnly;
+      private Networkmessage result;
+      
+      private Networkmessage PrepareBuilder() {
+        if (resultIsReadOnly) {
+          Networkmessage original = result;
+          result = new Networkmessage();
+          resultIsReadOnly = false;
+          MergeFrom(original);
+        }
+        return result;
+      }
+      
+      public override bool IsInitialized {
+        get { return result.IsInitialized; }
+      }
+      
+      protected override Networkmessage MessageBeingBuilt {
+        get { return PrepareBuilder(); }
+      }
+      
+      public override Builder Clear() {
+        result = DefaultInstance;
+        resultIsReadOnly = true;
+        return this;
+      }
+      
+      public override Builder Clone() {
+        if (resultIsReadOnly) {
+          return new Builder(result);
+        } else {
+          return new Builder().MergeFrom(result);
+        }
+      }
+      
+      public override pbd::MessageDescriptor DescriptorForType {
+        get { return global::Jangada.Networkmessage.Descriptor; }
+      }
+      
+      public override Networkmessage DefaultInstanceForType {
+        get { return global::Jangada.Networkmessage.DefaultInstance; }
+      }
+      
+      public override Networkmessage BuildPartial() {
+        if (resultIsReadOnly) {
+          return result;
+        }
+        resultIsReadOnly = true;
+        return result.MakeReadOnly();
+      }
+      
+      public override Builder MergeFrom(pb::IMessage other) {
+        if (other is Networkmessage) {
+          return MergeFrom((Networkmessage) other);
+        } else {
+          base.MergeFrom(other);
+          return this;
+        }
+      }
+      
+      public override Builder MergeFrom(Networkmessage other) {
+        if (other == global::Jangada.Networkmessage.DefaultInstance) return this;
+        PrepareBuilder();
+        if (other.HasType) {
+          Type = other.Type;
+        }
+        if (other.HasLoginPacket) {
+          MergeLoginPacket(other.LoginPacket);
+        }
+        if (other.HasCharactersPacket) {
+          MergeCharactersPacket(other.CharactersPacket);
+        }
+        this.MergeUnknownFields(other.UnknownFields);
+        return this;
+      }
+      
+      public override Builder MergeFrom(pb::ICodedInputStream input) {
+        return MergeFrom(input, pb::ExtensionRegistry.Empty);
+      }
+      
+      public override Builder MergeFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+        PrepareBuilder();
+        pb::UnknownFieldSet.Builder unknownFields = null;
+        uint tag;
+        string field_name;
+        while (input.ReadTag(out tag, out field_name)) {
+          if(tag == 0 && field_name != null) {
+            int field_ordinal = global::System.Array.BinarySearch(_networkmessageFieldNames, field_name, global::System.StringComparer.Ordinal);
+            if(field_ordinal >= 0)
+              tag = _networkmessageFieldTags[field_ordinal];
+            else {
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
+              continue;
+            }
+          }
+          switch (tag) {
+            case 0: {
+              throw pb::InvalidProtocolBufferException.InvalidTag();
+            }
+            default: {
+              if (pb::WireFormat.IsEndGroupTag(tag)) {
+                if (unknownFields != null) {
+                  this.UnknownFields = unknownFields.Build();
+                }
+                return this;
+              }
+              if (unknownFields == null) {
+                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+              }
+              ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
+              break;
+            }
+            case 8: {
+              object unknown;
+              if(input.ReadEnum(ref result.type_, out unknown)) {
+                result.hasType = true;
+              } else if(unknown is int) {
+                if (unknownFields == null) {
+                  unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
+                }
+                unknownFields.MergeVarintField(1, (ulong)(int)unknown);
+              }
+              break;
+            }
+            case 18: {
+              global::Jangada.LoginPacket.Builder subBuilder = global::Jangada.LoginPacket.CreateBuilder();
+              if (result.hasLoginPacket) {
+                subBuilder.MergeFrom(LoginPacket);
+              }
+              input.ReadMessage(subBuilder, extensionRegistry);
+              LoginPacket = subBuilder.BuildPartial();
+              break;
+            }
+            case 26: {
+              global::Jangada.CharactersPacket.Builder subBuilder = global::Jangada.CharactersPacket.CreateBuilder();
+              if (result.hasCharactersPacket) {
+                subBuilder.MergeFrom(CharactersPacket);
+              }
+              input.ReadMessage(subBuilder, extensionRegistry);
+              CharactersPacket = subBuilder.BuildPartial();
+              break;
+            }
+          }
+        }
+        
+        if (unknownFields != null) {
+          this.UnknownFields = unknownFields.Build();
+        }
+        return this;
+      }
+      
+      
+      public bool HasType {
+       get { return result.hasType; }
+      }
+      public global::Jangada.Networkmessage.Types.Type Type {
+        get { return result.Type; }
+        set { SetType(value); }
+      }
+      public Builder SetType(global::Jangada.Networkmessage.Types.Type value) {
+        PrepareBuilder();
+        result.hasType = true;
+        result.type_ = value;
+        return this;
+      }
+      public Builder ClearType() {
+        PrepareBuilder();
+        result.hasType = false;
+        result.type_ = global::Jangada.Networkmessage.Types.Type.LOGIN;
+        return this;
+      }
+      
+      public bool HasLoginPacket {
+       get { return result.hasLoginPacket; }
+      }
+      public global::Jangada.LoginPacket LoginPacket {
+        get { return result.LoginPacket; }
+        set { SetLoginPacket(value); }
+      }
+      public Builder SetLoginPacket(global::Jangada.LoginPacket value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        PrepareBuilder();
+        result.hasLoginPacket = true;
+        result.loginPacket_ = value;
+        return this;
+      }
+      public Builder SetLoginPacket(global::Jangada.LoginPacket.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        PrepareBuilder();
+        result.hasLoginPacket = true;
+        result.loginPacket_ = builderForValue.Build();
+        return this;
+      }
+      public Builder MergeLoginPacket(global::Jangada.LoginPacket value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        PrepareBuilder();
+        if (result.hasLoginPacket &&
+            result.loginPacket_ != global::Jangada.LoginPacket.DefaultInstance) {
+            result.loginPacket_ = global::Jangada.LoginPacket.CreateBuilder(result.loginPacket_).MergeFrom(value).BuildPartial();
+        } else {
+          result.loginPacket_ = value;
+        }
+        result.hasLoginPacket = true;
+        return this;
+      }
+      public Builder ClearLoginPacket() {
+        PrepareBuilder();
+        result.hasLoginPacket = false;
+        result.loginPacket_ = null;
+        return this;
+      }
+      
+      public bool HasCharactersPacket {
+       get { return result.hasCharactersPacket; }
+      }
+      public global::Jangada.CharactersPacket CharactersPacket {
+        get { return result.CharactersPacket; }
+        set { SetCharactersPacket(value); }
+      }
+      public Builder SetCharactersPacket(global::Jangada.CharactersPacket value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        PrepareBuilder();
+        result.hasCharactersPacket = true;
+        result.charactersPacket_ = value;
+        return this;
+      }
+      public Builder SetCharactersPacket(global::Jangada.CharactersPacket.Builder builderForValue) {
+        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
+        PrepareBuilder();
+        result.hasCharactersPacket = true;
+        result.charactersPacket_ = builderForValue.Build();
+        return this;
+      }
+      public Builder MergeCharactersPacket(global::Jangada.CharactersPacket value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        PrepareBuilder();
+        if (result.hasCharactersPacket &&
+            result.charactersPacket_ != global::Jangada.CharactersPacket.DefaultInstance) {
+            result.charactersPacket_ = global::Jangada.CharactersPacket.CreateBuilder(result.charactersPacket_).MergeFrom(value).BuildPartial();
+        } else {
+          result.charactersPacket_ = value;
+        }
+        result.hasCharactersPacket = true;
+        return this;
+      }
+      public Builder ClearCharactersPacket() {
+        PrepareBuilder();
+        result.hasCharactersPacket = false;
+        result.charactersPacket_ = null;
+        return this;
+      }
+    }
+    static Networkmessage() {
+      object.ReferenceEquals(global::Jangada.Proto.Networkmessage.Descriptor, null);
+    }
+  }
+  
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public sealed partial class LoginPacket : pb::GeneratedMessage<LoginPacket, LoginPacket.Builder> {
     private LoginPacket() { }
     private static readonly LoginPacket defaultInstance = new LoginPacket().MakeReadOnly();
-    private static readonly string[] _loginPacketFieldNames = new string[] { "password", "userName" };
-    private static readonly uint[] _loginPacketFieldTags = new uint[] { 18, 10 };
+    private static readonly string[] _loginPacketFieldNames = new string[] { "login", "password" };
+    private static readonly uint[] _loginPacketFieldTags = new uint[] { 10, 18 };
     public static LoginPacket DefaultInstance {
       get { return defaultInstance; }
     }
@@ -97,21 +532,21 @@ namespace JangadaServer {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_LoginPacket__Descriptor; }
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_LoginPacket__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<LoginPacket, LoginPacket.Builder> InternalFieldAccessors {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_LoginPacket__FieldAccessorTable; }
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_LoginPacket__FieldAccessorTable; }
     }
     
-    public const int UserNameFieldNumber = 1;
-    private bool hasUserName;
-    private string userName_ = "";
-    public bool HasUserName {
-      get { return hasUserName; }
+    public const int LoginFieldNumber = 1;
+    private bool hasLogin;
+    private string login_ = "";
+    public bool HasLogin {
+      get { return hasLogin; }
     }
-    public string UserName {
-      get { return userName_; }
+    public string Login {
+      get { return login_; }
     }
     
     public const int PasswordFieldNumber = 2;
@@ -126,7 +561,7 @@ namespace JangadaServer {
     
     public override bool IsInitialized {
       get {
-        if (!hasUserName) return false;
+        if (!hasLogin) return false;
         if (!hasPassword) return false;
         return true;
       }
@@ -135,11 +570,11 @@ namespace JangadaServer {
     public override void WriteTo(pb::ICodedOutputStream output) {
       int size = SerializedSize;
       string[] field_names = _loginPacketFieldNames;
-      if (hasUserName) {
-        output.WriteString(1, field_names[1], UserName);
+      if (hasLogin) {
+        output.WriteString(1, field_names[0], Login);
       }
       if (hasPassword) {
-        output.WriteString(2, field_names[0], Password);
+        output.WriteString(2, field_names[1], Password);
       }
       UnknownFields.WriteTo(output);
     }
@@ -151,8 +586,8 @@ namespace JangadaServer {
         if (size != -1) return size;
         
         size = 0;
-        if (hasUserName) {
-          size += pb::CodedOutputStream.ComputeStringSize(1, UserName);
+        if (hasLogin) {
+          size += pb::CodedOutputStream.ComputeStringSize(1, Login);
         }
         if (hasPassword) {
           size += pb::CodedOutputStream.ComputeStringSize(2, Password);
@@ -254,11 +689,11 @@ namespace JangadaServer {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::JangadaServer.LoginPacket.Descriptor; }
+        get { return global::Jangada.LoginPacket.Descriptor; }
       }
       
       public override LoginPacket DefaultInstanceForType {
-        get { return global::JangadaServer.LoginPacket.DefaultInstance; }
+        get { return global::Jangada.LoginPacket.DefaultInstance; }
       }
       
       public override LoginPacket BuildPartial() {
@@ -279,10 +714,10 @@ namespace JangadaServer {
       }
       
       public override Builder MergeFrom(LoginPacket other) {
-        if (other == global::JangadaServer.LoginPacket.DefaultInstance) return this;
+        if (other == global::Jangada.LoginPacket.DefaultInstance) return this;
         PrepareBuilder();
-        if (other.HasUserName) {
-          UserName = other.UserName;
+        if (other.HasLogin) {
+          Login = other.Login;
         }
         if (other.HasPassword) {
           Password = other.Password;
@@ -331,7 +766,7 @@ namespace JangadaServer {
               break;
             }
             case 10: {
-              result.hasUserName = input.ReadString(ref result.userName_);
+              result.hasLogin = input.ReadString(ref result.login_);
               break;
             }
             case 18: {
@@ -348,24 +783,24 @@ namespace JangadaServer {
       }
       
       
-      public bool HasUserName {
-        get { return result.hasUserName; }
+      public bool HasLogin {
+        get { return result.hasLogin; }
       }
-      public string UserName {
-        get { return result.UserName; }
-        set { SetUserName(value); }
+      public string Login {
+        get { return result.Login; }
+        set { SetLogin(value); }
       }
-      public Builder SetUserName(string value) {
+      public Builder SetLogin(string value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
-        result.hasUserName = true;
-        result.userName_ = value;
+        result.hasLogin = true;
+        result.login_ = value;
         return this;
       }
-      public Builder ClearUserName() {
+      public Builder ClearLogin() {
         PrepareBuilder();
-        result.hasUserName = false;
-        result.userName_ = "";
+        result.hasLogin = false;
+        result.login_ = "";
         return this;
       }
       
@@ -391,58 +826,86 @@ namespace JangadaServer {
       }
     }
     static LoginPacket() {
-      object.ReferenceEquals(global::JangadaServer.Networkmessage.Descriptor, null);
+      object.ReferenceEquals(global::Jangada.Proto.Networkmessage.Descriptor, null);
     }
   }
   
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class LogoutPacket : pb::GeneratedMessage<LogoutPacket, LogoutPacket.Builder> {
-    private LogoutPacket() { }
-    private static readonly LogoutPacket defaultInstance = new LogoutPacket().MakeReadOnly();
-    private static readonly string[] _logoutPacketFieldNames = new string[] { "quit" };
-    private static readonly uint[] _logoutPacketFieldTags = new uint[] { 8 };
-    public static LogoutPacket DefaultInstance {
+  public sealed partial class Character : pb::GeneratedMessage<Character, Character.Builder> {
+    private Character() { }
+    private static readonly Character defaultInstance = new Character().MakeReadOnly();
+    private static readonly string[] _characterFieldNames = new string[] { "id", "info", "name" };
+    private static readonly uint[] _characterFieldTags = new uint[] { 8, 26, 18 };
+    public static Character DefaultInstance {
       get { return defaultInstance; }
     }
     
-    public override LogoutPacket DefaultInstanceForType {
+    public override Character DefaultInstanceForType {
       get { return DefaultInstance; }
     }
     
-    protected override LogoutPacket ThisMessage {
+    protected override Character ThisMessage {
       get { return this; }
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_LogoutPacket__Descriptor; }
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_Character__Descriptor; }
     }
     
-    protected override pb::FieldAccess.FieldAccessorTable<LogoutPacket, LogoutPacket.Builder> InternalFieldAccessors {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_LogoutPacket__FieldAccessorTable; }
+    protected override pb::FieldAccess.FieldAccessorTable<Character, Character.Builder> InternalFieldAccessors {
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_Character__FieldAccessorTable; }
     }
     
-    public const int QuitFieldNumber = 1;
-    private bool hasQuit;
-    private bool quit_;
-    public bool HasQuit {
-      get { return hasQuit; }
+    public const int IdFieldNumber = 1;
+    private bool hasId;
+    private int id_;
+    public bool HasId {
+      get { return hasId; }
     }
-    public bool Quit {
-      get { return quit_; }
+    public int Id {
+      get { return id_; }
+    }
+    
+    public const int NameFieldNumber = 2;
+    private bool hasName;
+    private string name_ = "";
+    public bool HasName {
+      get { return hasName; }
+    }
+    public string Name {
+      get { return name_; }
+    }
+    
+    public const int InfoFieldNumber = 3;
+    private bool hasInfo;
+    private string info_ = "";
+    public bool HasInfo {
+      get { return hasInfo; }
+    }
+    public string Info {
+      get { return info_; }
     }
     
     public override bool IsInitialized {
       get {
-        if (!hasQuit) return false;
+        if (!hasId) return false;
+        if (!hasName) return false;
+        if (!hasInfo) return false;
         return true;
       }
     }
     
     public override void WriteTo(pb::ICodedOutputStream output) {
       int size = SerializedSize;
-      string[] field_names = _logoutPacketFieldNames;
-      if (hasQuit) {
-        output.WriteBool(1, field_names[0], Quit);
+      string[] field_names = _characterFieldNames;
+      if (hasId) {
+        output.WriteInt32(1, field_names[0], Id);
+      }
+      if (hasName) {
+        output.WriteString(2, field_names[2], Name);
+      }
+      if (hasInfo) {
+        output.WriteString(3, field_names[1], Info);
       }
       UnknownFields.WriteTo(output);
     }
@@ -454,8 +917,14 @@ namespace JangadaServer {
         if (size != -1) return size;
         
         size = 0;
-        if (hasQuit) {
-          size += pb::CodedOutputStream.ComputeBoolSize(1, Quit);
+        if (hasId) {
+          size += pb::CodedOutputStream.ComputeInt32Size(1, Id);
+        }
+        if (hasName) {
+          size += pb::CodedOutputStream.ComputeStringSize(2, Name);
+        }
+        if (hasInfo) {
+          size += pb::CodedOutputStream.ComputeStringSize(3, Info);
         }
         size += UnknownFields.SerializedSize;
         memoizedSerializedSize = size;
@@ -463,49 +932,49 @@ namespace JangadaServer {
       }
     }
     
-    public static LogoutPacket ParseFrom(pb::ByteString data) {
+    public static Character ParseFrom(pb::ByteString data) {
       return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+    public static Character ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(byte[] data) {
+    public static Character ParseFrom(byte[] data) {
       return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+    public static Character ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(global::System.IO.Stream input) {
+    public static Character ParseFrom(global::System.IO.Stream input) {
       return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+    public static Character ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
     }
-    public static LogoutPacket ParseDelimitedFrom(global::System.IO.Stream input) {
+    public static Character ParseDelimitedFrom(global::System.IO.Stream input) {
       return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
     }
-    public static LogoutPacket ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+    public static Character ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
       return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(pb::ICodedInputStream input) {
+    public static Character ParseFrom(pb::ICodedInputStream input) {
       return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
     }
-    public static LogoutPacket ParseFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+    public static Character ParseFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
     }
-    private LogoutPacket MakeReadOnly() {
+    private Character MakeReadOnly() {
       return this;
     }
     
     public static Builder CreateBuilder() { return new Builder(); }
     public override Builder ToBuilder() { return CreateBuilder(this); }
     public override Builder CreateBuilderForType() { return new Builder(); }
-    public static Builder CreateBuilder(LogoutPacket prototype) {
+    public static Builder CreateBuilder(Character prototype) {
       return new Builder(prototype);
     }
     
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public sealed partial class Builder : pb::GeneratedBuilder<LogoutPacket, Builder> {
+    public sealed partial class Builder : pb::GeneratedBuilder<Character, Builder> {
       protected override Builder ThisBuilder {
         get { return this; }
       }
@@ -513,18 +982,18 @@ namespace JangadaServer {
         result = DefaultInstance;
         resultIsReadOnly = true;
       }
-      internal Builder(LogoutPacket cloneFrom) {
+      internal Builder(Character cloneFrom) {
         result = cloneFrom;
         resultIsReadOnly = true;
       }
       
       private bool resultIsReadOnly;
-      private LogoutPacket result;
+      private Character result;
       
-      private LogoutPacket PrepareBuilder() {
+      private Character PrepareBuilder() {
         if (resultIsReadOnly) {
-          LogoutPacket original = result;
-          result = new LogoutPacket();
+          Character original = result;
+          result = new Character();
           resultIsReadOnly = false;
           MergeFrom(original);
         }
@@ -535,7 +1004,7 @@ namespace JangadaServer {
         get { return result.IsInitialized; }
       }
       
-      protected override LogoutPacket MessageBeingBuilt {
+      protected override Character MessageBeingBuilt {
         get { return PrepareBuilder(); }
       }
       
@@ -554,14 +1023,14 @@ namespace JangadaServer {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::JangadaServer.LogoutPacket.Descriptor; }
+        get { return global::Jangada.Character.Descriptor; }
       }
       
-      public override LogoutPacket DefaultInstanceForType {
-        get { return global::JangadaServer.LogoutPacket.DefaultInstance; }
+      public override Character DefaultInstanceForType {
+        get { return global::Jangada.Character.DefaultInstance; }
       }
       
-      public override LogoutPacket BuildPartial() {
+      public override Character BuildPartial() {
         if (resultIsReadOnly) {
           return result;
         }
@@ -570,19 +1039,25 @@ namespace JangadaServer {
       }
       
       public override Builder MergeFrom(pb::IMessage other) {
-        if (other is LogoutPacket) {
-          return MergeFrom((LogoutPacket) other);
+        if (other is Character) {
+          return MergeFrom((Character) other);
         } else {
           base.MergeFrom(other);
           return this;
         }
       }
       
-      public override Builder MergeFrom(LogoutPacket other) {
-        if (other == global::JangadaServer.LogoutPacket.DefaultInstance) return this;
+      public override Builder MergeFrom(Character other) {
+        if (other == global::Jangada.Character.DefaultInstance) return this;
         PrepareBuilder();
-        if (other.HasQuit) {
-          Quit = other.Quit;
+        if (other.HasId) {
+          Id = other.Id;
+        }
+        if (other.HasName) {
+          Name = other.Name;
+        }
+        if (other.HasInfo) {
+          Info = other.Info;
         }
         this.MergeUnknownFields(other.UnknownFields);
         return this;
@@ -599,9 +1074,9 @@ namespace JangadaServer {
         string field_name;
         while (input.ReadTag(out tag, out field_name)) {
           if(tag == 0 && field_name != null) {
-            int field_ordinal = global::System.Array.BinarySearch(_logoutPacketFieldNames, field_name, global::System.StringComparer.Ordinal);
+            int field_ordinal = global::System.Array.BinarySearch(_characterFieldNames, field_name, global::System.StringComparer.Ordinal);
             if(field_ordinal >= 0)
-              tag = _logoutPacketFieldTags[field_ordinal];
+              tag = _characterFieldTags[field_ordinal];
             else {
               if (unknownFields == null) {
                 unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
@@ -628,7 +1103,15 @@ namespace JangadaServer {
               break;
             }
             case 8: {
-              result.hasQuit = input.ReadBool(ref result.quit_);
+              result.hasId = input.ReadInt32(ref result.id_);
+              break;
+            }
+            case 18: {
+              result.hasName = input.ReadString(ref result.name_);
+              break;
+            }
+            case 26: {
+              result.hasInfo = input.ReadString(ref result.info_);
               break;
             }
           }
@@ -641,79 +1124,125 @@ namespace JangadaServer {
       }
       
       
-      public bool HasQuit {
-        get { return result.hasQuit; }
+      public bool HasId {
+        get { return result.hasId; }
       }
-      public bool Quit {
-        get { return result.Quit; }
-        set { SetQuit(value); }
+      public int Id {
+        get { return result.Id; }
+        set { SetId(value); }
       }
-      public Builder SetQuit(bool value) {
+      public Builder SetId(int value) {
         PrepareBuilder();
-        result.hasQuit = true;
-        result.quit_ = value;
+        result.hasId = true;
+        result.id_ = value;
         return this;
       }
-      public Builder ClearQuit() {
+      public Builder ClearId() {
         PrepareBuilder();
-        result.hasQuit = false;
-        result.quit_ = false;
+        result.hasId = false;
+        result.id_ = 0;
+        return this;
+      }
+      
+      public bool HasName {
+        get { return result.hasName; }
+      }
+      public string Name {
+        get { return result.Name; }
+        set { SetName(value); }
+      }
+      public Builder SetName(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        PrepareBuilder();
+        result.hasName = true;
+        result.name_ = value;
+        return this;
+      }
+      public Builder ClearName() {
+        PrepareBuilder();
+        result.hasName = false;
+        result.name_ = "";
+        return this;
+      }
+      
+      public bool HasInfo {
+        get { return result.hasInfo; }
+      }
+      public string Info {
+        get { return result.Info; }
+        set { SetInfo(value); }
+      }
+      public Builder SetInfo(string value) {
+        pb::ThrowHelper.ThrowIfNull(value, "value");
+        PrepareBuilder();
+        result.hasInfo = true;
+        result.info_ = value;
+        return this;
+      }
+      public Builder ClearInfo() {
+        PrepareBuilder();
+        result.hasInfo = false;
+        result.info_ = "";
         return this;
       }
     }
-    static LogoutPacket() {
-      object.ReferenceEquals(global::JangadaServer.Networkmessage.Descriptor, null);
+    static Character() {
+      object.ReferenceEquals(global::Jangada.Proto.Networkmessage.Descriptor, null);
     }
   }
   
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class ChatPacket : pb::GeneratedMessage<ChatPacket, ChatPacket.Builder> {
-    private ChatPacket() { }
-    private static readonly ChatPacket defaultInstance = new ChatPacket().MakeReadOnly();
-    private static readonly string[] _chatPacketFieldNames = new string[] { "message" };
-    private static readonly uint[] _chatPacketFieldTags = new uint[] { 10 };
-    public static ChatPacket DefaultInstance {
+  public sealed partial class CharactersPacket : pb::GeneratedMessage<CharactersPacket, CharactersPacket.Builder> {
+    private CharactersPacket() { }
+    private static readonly CharactersPacket defaultInstance = new CharactersPacket().MakeReadOnly();
+    private static readonly string[] _charactersPacketFieldNames = new string[] { "CharacterList" };
+    private static readonly uint[] _charactersPacketFieldTags = new uint[] { 10 };
+    public static CharactersPacket DefaultInstance {
       get { return defaultInstance; }
     }
     
-    public override ChatPacket DefaultInstanceForType {
+    public override CharactersPacket DefaultInstanceForType {
       get { return DefaultInstance; }
     }
     
-    protected override ChatPacket ThisMessage {
+    protected override CharactersPacket ThisMessage {
       get { return this; }
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_ChatPacket__Descriptor; }
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_CharactersPacket__Descriptor; }
     }
     
-    protected override pb::FieldAccess.FieldAccessorTable<ChatPacket, ChatPacket.Builder> InternalFieldAccessors {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_ChatPacket__FieldAccessorTable; }
+    protected override pb::FieldAccess.FieldAccessorTable<CharactersPacket, CharactersPacket.Builder> InternalFieldAccessors {
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_CharactersPacket__FieldAccessorTable; }
     }
     
-    public const int MessageFieldNumber = 1;
-    private bool hasMessage;
-    private string message_ = "";
-    public bool HasMessage {
-      get { return hasMessage; }
+    public const int CharacterListFieldNumber = 1;
+    private pbc::PopsicleList<global::Jangada.Character> characterList_ = new pbc::PopsicleList<global::Jangada.Character>();
+    public scg::IList<global::Jangada.Character> CharacterListList {
+      get { return characterList_; }
     }
-    public string Message {
-      get { return message_; }
+    public int CharacterListCount {
+      get { return characterList_.Count; }
+    }
+    public global::Jangada.Character GetCharacterList(int index) {
+      return characterList_[index];
     }
     
     public override bool IsInitialized {
       get {
-        if (!hasMessage) return false;
+        foreach (global::Jangada.Character element in CharacterListList) {
+          if (!element.IsInitialized) return false;
+        }
         return true;
       }
     }
     
     public override void WriteTo(pb::ICodedOutputStream output) {
       int size = SerializedSize;
-      string[] field_names = _chatPacketFieldNames;
-      if (hasMessage) {
-        output.WriteString(1, field_names[0], Message);
+      string[] field_names = _charactersPacketFieldNames;
+      if (characterList_.Count > 0) {
+        output.WriteMessageArray(1, field_names[0], characterList_);
       }
       UnknownFields.WriteTo(output);
     }
@@ -725,8 +1254,8 @@ namespace JangadaServer {
         if (size != -1) return size;
         
         size = 0;
-        if (hasMessage) {
-          size += pb::CodedOutputStream.ComputeStringSize(1, Message);
+        foreach (global::Jangada.Character element in CharacterListList) {
+          size += pb::CodedOutputStream.ComputeMessageSize(1, element);
         }
         size += UnknownFields.SerializedSize;
         memoizedSerializedSize = size;
@@ -734,49 +1263,50 @@ namespace JangadaServer {
       }
     }
     
-    public static ChatPacket ParseFrom(pb::ByteString data) {
+    public static CharactersPacket ParseFrom(pb::ByteString data) {
       return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
     }
-    public static ChatPacket ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
+    public static CharactersPacket ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
     }
-    public static ChatPacket ParseFrom(byte[] data) {
+    public static CharactersPacket ParseFrom(byte[] data) {
       return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
     }
-    public static ChatPacket ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
+    public static CharactersPacket ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
     }
-    public static ChatPacket ParseFrom(global::System.IO.Stream input) {
+    public static CharactersPacket ParseFrom(global::System.IO.Stream input) {
       return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
     }
-    public static ChatPacket ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+    public static CharactersPacket ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
     }
-    public static ChatPacket ParseDelimitedFrom(global::System.IO.Stream input) {
+    public static CharactersPacket ParseDelimitedFrom(global::System.IO.Stream input) {
       return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
     }
-    public static ChatPacket ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
+    public static CharactersPacket ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
       return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
     }
-    public static ChatPacket ParseFrom(pb::ICodedInputStream input) {
+    public static CharactersPacket ParseFrom(pb::ICodedInputStream input) {
       return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
     }
-    public static ChatPacket ParseFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
+    public static CharactersPacket ParseFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
       return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
     }
-    private ChatPacket MakeReadOnly() {
+    private CharactersPacket MakeReadOnly() {
+      characterList_.MakeReadOnly();
       return this;
     }
     
     public static Builder CreateBuilder() { return new Builder(); }
     public override Builder ToBuilder() { return CreateBuilder(this); }
     public override Builder CreateBuilderForType() { return new Builder(); }
-    public static Builder CreateBuilder(ChatPacket prototype) {
+    public static Builder CreateBuilder(CharactersPacket prototype) {
       return new Builder(prototype);
     }
     
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public sealed partial class Builder : pb::GeneratedBuilder<ChatPacket, Builder> {
+    public sealed partial class Builder : pb::GeneratedBuilder<CharactersPacket, Builder> {
       protected override Builder ThisBuilder {
         get { return this; }
       }
@@ -784,18 +1314,18 @@ namespace JangadaServer {
         result = DefaultInstance;
         resultIsReadOnly = true;
       }
-      internal Builder(ChatPacket cloneFrom) {
+      internal Builder(CharactersPacket cloneFrom) {
         result = cloneFrom;
         resultIsReadOnly = true;
       }
       
       private bool resultIsReadOnly;
-      private ChatPacket result;
+      private CharactersPacket result;
       
-      private ChatPacket PrepareBuilder() {
+      private CharactersPacket PrepareBuilder() {
         if (resultIsReadOnly) {
-          ChatPacket original = result;
-          result = new ChatPacket();
+          CharactersPacket original = result;
+          result = new CharactersPacket();
           resultIsReadOnly = false;
           MergeFrom(original);
         }
@@ -806,7 +1336,7 @@ namespace JangadaServer {
         get { return result.IsInitialized; }
       }
       
-      protected override ChatPacket MessageBeingBuilt {
+      protected override CharactersPacket MessageBeingBuilt {
         get { return PrepareBuilder(); }
       }
       
@@ -825,14 +1355,14 @@ namespace JangadaServer {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::JangadaServer.ChatPacket.Descriptor; }
+        get { return global::Jangada.CharactersPacket.Descriptor; }
       }
       
-      public override ChatPacket DefaultInstanceForType {
-        get { return global::JangadaServer.ChatPacket.DefaultInstance; }
+      public override CharactersPacket DefaultInstanceForType {
+        get { return global::Jangada.CharactersPacket.DefaultInstance; }
       }
       
-      public override ChatPacket BuildPartial() {
+      public override CharactersPacket BuildPartial() {
         if (resultIsReadOnly) {
           return result;
         }
@@ -841,19 +1371,19 @@ namespace JangadaServer {
       }
       
       public override Builder MergeFrom(pb::IMessage other) {
-        if (other is ChatPacket) {
-          return MergeFrom((ChatPacket) other);
+        if (other is CharactersPacket) {
+          return MergeFrom((CharactersPacket) other);
         } else {
           base.MergeFrom(other);
           return this;
         }
       }
       
-      public override Builder MergeFrom(ChatPacket other) {
-        if (other == global::JangadaServer.ChatPacket.DefaultInstance) return this;
+      public override Builder MergeFrom(CharactersPacket other) {
+        if (other == global::Jangada.CharactersPacket.DefaultInstance) return this;
         PrepareBuilder();
-        if (other.HasMessage) {
-          Message = other.Message;
+        if (other.characterList_.Count != 0) {
+          result.characterList_.Add(other.characterList_);
         }
         this.MergeUnknownFields(other.UnknownFields);
         return this;
@@ -870,9 +1400,9 @@ namespace JangadaServer {
         string field_name;
         while (input.ReadTag(out tag, out field_name)) {
           if(tag == 0 && field_name != null) {
-            int field_ordinal = global::System.Array.BinarySearch(_chatPacketFieldNames, field_name, global::System.StringComparer.Ordinal);
+            int field_ordinal = global::System.Array.BinarySearch(_charactersPacketFieldNames, field_name, global::System.StringComparer.Ordinal);
             if(field_ordinal >= 0)
-              tag = _chatPacketFieldTags[field_ordinal];
+              tag = _charactersPacketFieldTags[field_ordinal];
             else {
               if (unknownFields == null) {
                 unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
@@ -899,7 +1429,7 @@ namespace JangadaServer {
               break;
             }
             case 10: {
-              result.hasMessage = input.ReadString(ref result.message_);
+              input.ReadMessageArray(tag, field_name, result.characterList_, global::Jangada.Character.DefaultInstance, extensionRegistry);
               break;
             }
           }
@@ -912,533 +1442,52 @@ namespace JangadaServer {
       }
       
       
-      public bool HasMessage {
-        get { return result.hasMessage; }
+      public pbc::IPopsicleList<global::Jangada.Character> CharacterListList {
+        get { return PrepareBuilder().characterList_; }
       }
-      public string Message {
-        get { return result.Message; }
-        set { SetMessage(value); }
+      public int CharacterListCount {
+        get { return result.CharacterListCount; }
       }
-      public Builder SetMessage(string value) {
+      public global::Jangada.Character GetCharacterList(int index) {
+        return result.GetCharacterList(index);
+      }
+      public Builder SetCharacterList(int index, global::Jangada.Character value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
-        result.hasMessage = true;
-        result.message_ = value;
+        result.characterList_[index] = value;
         return this;
       }
-      public Builder ClearMessage() {
-        PrepareBuilder();
-        result.hasMessage = false;
-        result.message_ = "";
-        return this;
-      }
-    }
-    static ChatPacket() {
-      object.ReferenceEquals(global::JangadaServer.Networkmessage.Descriptor, null);
-    }
-  }
-  
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class NetworkMessage : pb::GeneratedMessage<NetworkMessage, NetworkMessage.Builder> {
-    private NetworkMessage() { }
-    private static readonly NetworkMessage defaultInstance = new NetworkMessage().MakeReadOnly();
-    private static readonly string[] _networkMessageFieldNames = new string[] { "chatPacket", "loginPacket", "logoutPacket", "type" };
-    private static readonly uint[] _networkMessageFieldTags = new uint[] { 34, 18, 26, 8 };
-    public static NetworkMessage DefaultInstance {
-      get { return defaultInstance; }
-    }
-    
-    public override NetworkMessage DefaultInstanceForType {
-      get { return DefaultInstance; }
-    }
-    
-    protected override NetworkMessage ThisMessage {
-      get { return this; }
-    }
-    
-    public static pbd::MessageDescriptor Descriptor {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_NetworkMessage__Descriptor; }
-    }
-    
-    protected override pb::FieldAccess.FieldAccessorTable<NetworkMessage, NetworkMessage.Builder> InternalFieldAccessors {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_NetworkMessage__FieldAccessorTable; }
-    }
-    
-    #region Nested types
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public static partial class Types {
-      public enum Type {
-        LOGIN = 1,
-        LOGOUT = 2,
-        CHAT = 3,
-      }
-      
-    }
-    #endregion
-    
-    public const int TypeFieldNumber = 1;
-    private bool hasType;
-    private global::JangadaServer.NetworkMessage.Types.Type type_ = global::JangadaServer.NetworkMessage.Types.Type.LOGIN;
-    public bool HasType {
-      get { return hasType; }
-    }
-    public global::JangadaServer.NetworkMessage.Types.Type Type {
-      get { return type_; }
-    }
-    
-    public const int LoginPacketFieldNumber = 2;
-    private bool hasLoginPacket;
-    private global::JangadaServer.LoginPacket loginPacket_;
-    public bool HasLoginPacket {
-      get { return hasLoginPacket; }
-    }
-    public global::JangadaServer.LoginPacket LoginPacket {
-      get { return loginPacket_ ?? global::JangadaServer.LoginPacket.DefaultInstance; }
-    }
-    
-    public const int LogoutPacketFieldNumber = 3;
-    private bool hasLogoutPacket;
-    private global::JangadaServer.LogoutPacket logoutPacket_;
-    public bool HasLogoutPacket {
-      get { return hasLogoutPacket; }
-    }
-    public global::JangadaServer.LogoutPacket LogoutPacket {
-      get { return logoutPacket_ ?? global::JangadaServer.LogoutPacket.DefaultInstance; }
-    }
-    
-    public const int ChatPacketFieldNumber = 4;
-    private bool hasChatPacket;
-    private global::JangadaServer.ChatPacket chatPacket_;
-    public bool HasChatPacket {
-      get { return hasChatPacket; }
-    }
-    public global::JangadaServer.ChatPacket ChatPacket {
-      get { return chatPacket_ ?? global::JangadaServer.ChatPacket.DefaultInstance; }
-    }
-    
-    public override bool IsInitialized {
-      get {
-        if (!hasType) return false;
-        if (HasLoginPacket) {
-          if (!LoginPacket.IsInitialized) return false;
-        }
-        if (HasLogoutPacket) {
-          if (!LogoutPacket.IsInitialized) return false;
-        }
-        if (HasChatPacket) {
-          if (!ChatPacket.IsInitialized) return false;
-        }
-        return true;
-      }
-    }
-    
-    public override void WriteTo(pb::ICodedOutputStream output) {
-      int size = SerializedSize;
-      string[] field_names = _networkMessageFieldNames;
-      if (hasType) {
-        output.WriteEnum(1, field_names[3], (int) Type, Type);
-      }
-      if (hasLoginPacket) {
-        output.WriteMessage(2, field_names[1], LoginPacket);
-      }
-      if (hasLogoutPacket) {
-        output.WriteMessage(3, field_names[2], LogoutPacket);
-      }
-      if (hasChatPacket) {
-        output.WriteMessage(4, field_names[0], ChatPacket);
-      }
-      UnknownFields.WriteTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public override int SerializedSize {
-      get {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-        
-        size = 0;
-        if (hasType) {
-          size += pb::CodedOutputStream.ComputeEnumSize(1, (int) Type);
-        }
-        if (hasLoginPacket) {
-          size += pb::CodedOutputStream.ComputeMessageSize(2, LoginPacket);
-        }
-        if (hasLogoutPacket) {
-          size += pb::CodedOutputStream.ComputeMessageSize(3, LogoutPacket);
-        }
-        if (hasChatPacket) {
-          size += pb::CodedOutputStream.ComputeMessageSize(4, ChatPacket);
-        }
-        size += UnknownFields.SerializedSize;
-        memoizedSerializedSize = size;
-        return size;
-      }
-    }
-    
-    public static NetworkMessage ParseFrom(pb::ByteString data) {
-      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(pb::ByteString data, pb::ExtensionRegistry extensionRegistry) {
-      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(byte[] data) {
-      return ((Builder) CreateBuilder().MergeFrom(data)).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(byte[] data, pb::ExtensionRegistry extensionRegistry) {
-      return ((Builder) CreateBuilder().MergeFrom(data, extensionRegistry)).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(global::System.IO.Stream input) {
-      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
-      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
-    }
-    public static NetworkMessage ParseDelimitedFrom(global::System.IO.Stream input) {
-      return CreateBuilder().MergeDelimitedFrom(input).BuildParsed();
-    }
-    public static NetworkMessage ParseDelimitedFrom(global::System.IO.Stream input, pb::ExtensionRegistry extensionRegistry) {
-      return CreateBuilder().MergeDelimitedFrom(input, extensionRegistry).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(pb::ICodedInputStream input) {
-      return ((Builder) CreateBuilder().MergeFrom(input)).BuildParsed();
-    }
-    public static NetworkMessage ParseFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
-      return ((Builder) CreateBuilder().MergeFrom(input, extensionRegistry)).BuildParsed();
-    }
-    private NetworkMessage MakeReadOnly() {
-      return this;
-    }
-    
-    public static Builder CreateBuilder() { return new Builder(); }
-    public override Builder ToBuilder() { return CreateBuilder(this); }
-    public override Builder CreateBuilderForType() { return new Builder(); }
-    public static Builder CreateBuilder(NetworkMessage prototype) {
-      return new Builder(prototype);
-    }
-    
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public sealed partial class Builder : pb::GeneratedBuilder<NetworkMessage, Builder> {
-      protected override Builder ThisBuilder {
-        get { return this; }
-      }
-      public Builder() {
-        result = DefaultInstance;
-        resultIsReadOnly = true;
-      }
-      internal Builder(NetworkMessage cloneFrom) {
-        result = cloneFrom;
-        resultIsReadOnly = true;
-      }
-      
-      private bool resultIsReadOnly;
-      private NetworkMessage result;
-      
-      private NetworkMessage PrepareBuilder() {
-        if (resultIsReadOnly) {
-          NetworkMessage original = result;
-          result = new NetworkMessage();
-          resultIsReadOnly = false;
-          MergeFrom(original);
-        }
-        return result;
-      }
-      
-      public override bool IsInitialized {
-        get { return result.IsInitialized; }
-      }
-      
-      protected override NetworkMessage MessageBeingBuilt {
-        get { return PrepareBuilder(); }
-      }
-      
-      public override Builder Clear() {
-        result = DefaultInstance;
-        resultIsReadOnly = true;
-        return this;
-      }
-      
-      public override Builder Clone() {
-        if (resultIsReadOnly) {
-          return new Builder(result);
-        } else {
-          return new Builder().MergeFrom(result);
-        }
-      }
-      
-      public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::JangadaServer.NetworkMessage.Descriptor; }
-      }
-      
-      public override NetworkMessage DefaultInstanceForType {
-        get { return global::JangadaServer.NetworkMessage.DefaultInstance; }
-      }
-      
-      public override NetworkMessage BuildPartial() {
-        if (resultIsReadOnly) {
-          return result;
-        }
-        resultIsReadOnly = true;
-        return result.MakeReadOnly();
-      }
-      
-      public override Builder MergeFrom(pb::IMessage other) {
-        if (other is NetworkMessage) {
-          return MergeFrom((NetworkMessage) other);
-        } else {
-          base.MergeFrom(other);
-          return this;
-        }
-      }
-      
-      public override Builder MergeFrom(NetworkMessage other) {
-        if (other == global::JangadaServer.NetworkMessage.DefaultInstance) return this;
-        PrepareBuilder();
-        if (other.HasType) {
-          Type = other.Type;
-        }
-        if (other.HasLoginPacket) {
-          MergeLoginPacket(other.LoginPacket);
-        }
-        if (other.HasLogoutPacket) {
-          MergeLogoutPacket(other.LogoutPacket);
-        }
-        if (other.HasChatPacket) {
-          MergeChatPacket(other.ChatPacket);
-        }
-        this.MergeUnknownFields(other.UnknownFields);
-        return this;
-      }
-      
-      public override Builder MergeFrom(pb::ICodedInputStream input) {
-        return MergeFrom(input, pb::ExtensionRegistry.Empty);
-      }
-      
-      public override Builder MergeFrom(pb::ICodedInputStream input, pb::ExtensionRegistry extensionRegistry) {
-        PrepareBuilder();
-        pb::UnknownFieldSet.Builder unknownFields = null;
-        uint tag;
-        string field_name;
-        while (input.ReadTag(out tag, out field_name)) {
-          if(tag == 0 && field_name != null) {
-            int field_ordinal = global::System.Array.BinarySearch(_networkMessageFieldNames, field_name, global::System.StringComparer.Ordinal);
-            if(field_ordinal >= 0)
-              tag = _networkMessageFieldTags[field_ordinal];
-            else {
-              if (unknownFields == null) {
-                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
-              }
-              ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
-              continue;
-            }
-          }
-          switch (tag) {
-            case 0: {
-              throw pb::InvalidProtocolBufferException.InvalidTag();
-            }
-            default: {
-              if (pb::WireFormat.IsEndGroupTag(tag)) {
-                if (unknownFields != null) {
-                  this.UnknownFields = unknownFields.Build();
-                }
-                return this;
-              }
-              if (unknownFields == null) {
-                unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
-              }
-              ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
-              break;
-            }
-            case 8: {
-              object unknown;
-              if(input.ReadEnum(ref result.type_, out unknown)) {
-                result.hasType = true;
-              } else if(unknown is int) {
-                if (unknownFields == null) {
-                  unknownFields = pb::UnknownFieldSet.CreateBuilder(this.UnknownFields);
-                }
-                unknownFields.MergeVarintField(1, (ulong)(int)unknown);
-              }
-              break;
-            }
-            case 18: {
-              global::JangadaServer.LoginPacket.Builder subBuilder = global::JangadaServer.LoginPacket.CreateBuilder();
-              if (result.hasLoginPacket) {
-                subBuilder.MergeFrom(LoginPacket);
-              }
-              input.ReadMessage(subBuilder, extensionRegistry);
-              LoginPacket = subBuilder.BuildPartial();
-              break;
-            }
-            case 26: {
-              global::JangadaServer.LogoutPacket.Builder subBuilder = global::JangadaServer.LogoutPacket.CreateBuilder();
-              if (result.hasLogoutPacket) {
-                subBuilder.MergeFrom(LogoutPacket);
-              }
-              input.ReadMessage(subBuilder, extensionRegistry);
-              LogoutPacket = subBuilder.BuildPartial();
-              break;
-            }
-            case 34: {
-              global::JangadaServer.ChatPacket.Builder subBuilder = global::JangadaServer.ChatPacket.CreateBuilder();
-              if (result.hasChatPacket) {
-                subBuilder.MergeFrom(ChatPacket);
-              }
-              input.ReadMessage(subBuilder, extensionRegistry);
-              ChatPacket = subBuilder.BuildPartial();
-              break;
-            }
-          }
-        }
-        
-        if (unknownFields != null) {
-          this.UnknownFields = unknownFields.Build();
-        }
-        return this;
-      }
-      
-      
-      public bool HasType {
-       get { return result.hasType; }
-      }
-      public global::JangadaServer.NetworkMessage.Types.Type Type {
-        get { return result.Type; }
-        set { SetType(value); }
-      }
-      public Builder SetType(global::JangadaServer.NetworkMessage.Types.Type value) {
-        PrepareBuilder();
-        result.hasType = true;
-        result.type_ = value;
-        return this;
-      }
-      public Builder ClearType() {
-        PrepareBuilder();
-        result.hasType = false;
-        result.type_ = global::JangadaServer.NetworkMessage.Types.Type.LOGIN;
-        return this;
-      }
-      
-      public bool HasLoginPacket {
-       get { return result.hasLoginPacket; }
-      }
-      public global::JangadaServer.LoginPacket LoginPacket {
-        get { return result.LoginPacket; }
-        set { SetLoginPacket(value); }
-      }
-      public Builder SetLoginPacket(global::JangadaServer.LoginPacket value) {
-        pb::ThrowHelper.ThrowIfNull(value, "value");
-        PrepareBuilder();
-        result.hasLoginPacket = true;
-        result.loginPacket_ = value;
-        return this;
-      }
-      public Builder SetLoginPacket(global::JangadaServer.LoginPacket.Builder builderForValue) {
+      public Builder SetCharacterList(int index, global::Jangada.Character.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
-        result.hasLoginPacket = true;
-        result.loginPacket_ = builderForValue.Build();
+        result.characterList_[index] = builderForValue.Build();
         return this;
       }
-      public Builder MergeLoginPacket(global::JangadaServer.LoginPacket value) {
+      public Builder AddCharacterList(global::Jangada.Character value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
-        if (result.hasLoginPacket &&
-            result.loginPacket_ != global::JangadaServer.LoginPacket.DefaultInstance) {
-            result.loginPacket_ = global::JangadaServer.LoginPacket.CreateBuilder(result.loginPacket_).MergeFrom(value).BuildPartial();
-        } else {
-          result.loginPacket_ = value;
-        }
-        result.hasLoginPacket = true;
+        result.characterList_.Add(value);
         return this;
       }
-      public Builder ClearLoginPacket() {
-        PrepareBuilder();
-        result.hasLoginPacket = false;
-        result.loginPacket_ = null;
-        return this;
-      }
-      
-      public bool HasLogoutPacket {
-       get { return result.hasLogoutPacket; }
-      }
-      public global::JangadaServer.LogoutPacket LogoutPacket {
-        get { return result.LogoutPacket; }
-        set { SetLogoutPacket(value); }
-      }
-      public Builder SetLogoutPacket(global::JangadaServer.LogoutPacket value) {
-        pb::ThrowHelper.ThrowIfNull(value, "value");
-        PrepareBuilder();
-        result.hasLogoutPacket = true;
-        result.logoutPacket_ = value;
-        return this;
-      }
-      public Builder SetLogoutPacket(global::JangadaServer.LogoutPacket.Builder builderForValue) {
+      public Builder AddCharacterList(global::Jangada.Character.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
-        result.hasLogoutPacket = true;
-        result.logoutPacket_ = builderForValue.Build();
+        result.characterList_.Add(builderForValue.Build());
         return this;
       }
-      public Builder MergeLogoutPacket(global::JangadaServer.LogoutPacket value) {
-        pb::ThrowHelper.ThrowIfNull(value, "value");
+      public Builder AddRangeCharacterList(scg::IEnumerable<global::Jangada.Character> values) {
         PrepareBuilder();
-        if (result.hasLogoutPacket &&
-            result.logoutPacket_ != global::JangadaServer.LogoutPacket.DefaultInstance) {
-            result.logoutPacket_ = global::JangadaServer.LogoutPacket.CreateBuilder(result.logoutPacket_).MergeFrom(value).BuildPartial();
-        } else {
-          result.logoutPacket_ = value;
-        }
-        result.hasLogoutPacket = true;
+        result.characterList_.Add(values);
         return this;
       }
-      public Builder ClearLogoutPacket() {
+      public Builder ClearCharacterList() {
         PrepareBuilder();
-        result.hasLogoutPacket = false;
-        result.logoutPacket_ = null;
-        return this;
-      }
-      
-      public bool HasChatPacket {
-       get { return result.hasChatPacket; }
-      }
-      public global::JangadaServer.ChatPacket ChatPacket {
-        get { return result.ChatPacket; }
-        set { SetChatPacket(value); }
-      }
-      public Builder SetChatPacket(global::JangadaServer.ChatPacket value) {
-        pb::ThrowHelper.ThrowIfNull(value, "value");
-        PrepareBuilder();
-        result.hasChatPacket = true;
-        result.chatPacket_ = value;
-        return this;
-      }
-      public Builder SetChatPacket(global::JangadaServer.ChatPacket.Builder builderForValue) {
-        pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
-        PrepareBuilder();
-        result.hasChatPacket = true;
-        result.chatPacket_ = builderForValue.Build();
-        return this;
-      }
-      public Builder MergeChatPacket(global::JangadaServer.ChatPacket value) {
-        pb::ThrowHelper.ThrowIfNull(value, "value");
-        PrepareBuilder();
-        if (result.hasChatPacket &&
-            result.chatPacket_ != global::JangadaServer.ChatPacket.DefaultInstance) {
-            result.chatPacket_ = global::JangadaServer.ChatPacket.CreateBuilder(result.chatPacket_).MergeFrom(value).BuildPartial();
-        } else {
-          result.chatPacket_ = value;
-        }
-        result.hasChatPacket = true;
-        return this;
-      }
-      public Builder ClearChatPacket() {
-        PrepareBuilder();
-        result.hasChatPacket = false;
-        result.chatPacket_ = null;
+        result.characterList_.Clear();
         return this;
       }
     }
-    static NetworkMessage() {
-      object.ReferenceEquals(global::JangadaServer.Networkmessage.Descriptor, null);
+    static CharactersPacket() {
+      object.ReferenceEquals(global::Jangada.Proto.Networkmessage.Descriptor, null);
     }
   }
   
@@ -1446,7 +1495,7 @@ namespace JangadaServer {
   public sealed partial class Messages : pb::GeneratedMessage<Messages, Messages.Builder> {
     private Messages() { }
     private static readonly Messages defaultInstance = new Messages().MakeReadOnly();
-    private static readonly string[] _messagesFieldNames = new string[] { "networkmessage" };
+    private static readonly string[] _messagesFieldNames = new string[] { "Networkmessage" };
     private static readonly uint[] _messagesFieldTags = new uint[] { 10 };
     public static Messages DefaultInstance {
       get { return defaultInstance; }
@@ -1461,28 +1510,28 @@ namespace JangadaServer {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_Messages__Descriptor; }
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_Messages__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<Messages, Messages.Builder> InternalFieldAccessors {
-      get { return global::JangadaServer.Networkmessage.internal__static_JangadaServer_Messages__FieldAccessorTable; }
+      get { return global::Jangada.Proto.Networkmessage.internal__static_Jangada_Messages__FieldAccessorTable; }
     }
     
     public const int NetworkmessageFieldNumber = 1;
-    private pbc::PopsicleList<global::JangadaServer.NetworkMessage> networkmessage_ = new pbc::PopsicleList<global::JangadaServer.NetworkMessage>();
-    public scg::IList<global::JangadaServer.NetworkMessage> NetworkmessageList {
+    private pbc::PopsicleList<global::Jangada.Networkmessage> networkmessage_ = new pbc::PopsicleList<global::Jangada.Networkmessage>();
+    public scg::IList<global::Jangada.Networkmessage> NetworkmessageList {
       get { return networkmessage_; }
     }
     public int NetworkmessageCount {
       get { return networkmessage_.Count; }
     }
-    public global::JangadaServer.NetworkMessage GetNetworkmessage(int index) {
+    public global::Jangada.Networkmessage GetNetworkmessage(int index) {
       return networkmessage_[index];
     }
     
     public override bool IsInitialized {
       get {
-        foreach (global::JangadaServer.NetworkMessage element in NetworkmessageList) {
+        foreach (global::Jangada.Networkmessage element in NetworkmessageList) {
           if (!element.IsInitialized) return false;
         }
         return true;
@@ -1505,7 +1554,7 @@ namespace JangadaServer {
         if (size != -1) return size;
         
         size = 0;
-        foreach (global::JangadaServer.NetworkMessage element in NetworkmessageList) {
+        foreach (global::Jangada.Networkmessage element in NetworkmessageList) {
           size += pb::CodedOutputStream.ComputeMessageSize(1, element);
         }
         size += UnknownFields.SerializedSize;
@@ -1606,11 +1655,11 @@ namespace JangadaServer {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::JangadaServer.Messages.Descriptor; }
+        get { return global::Jangada.Messages.Descriptor; }
       }
       
       public override Messages DefaultInstanceForType {
-        get { return global::JangadaServer.Messages.DefaultInstance; }
+        get { return global::Jangada.Messages.DefaultInstance; }
       }
       
       public override Messages BuildPartial() {
@@ -1631,7 +1680,7 @@ namespace JangadaServer {
       }
       
       public override Builder MergeFrom(Messages other) {
-        if (other == global::JangadaServer.Messages.DefaultInstance) return this;
+        if (other == global::Jangada.Messages.DefaultInstance) return this;
         PrepareBuilder();
         if (other.networkmessage_.Count != 0) {
           result.networkmessage_.Add(other.networkmessage_);
@@ -1680,7 +1729,7 @@ namespace JangadaServer {
               break;
             }
             case 10: {
-              input.ReadMessageArray(tag, field_name, result.networkmessage_, global::JangadaServer.NetworkMessage.DefaultInstance, extensionRegistry);
+              input.ReadMessageArray(tag, field_name, result.networkmessage_, global::Jangada.Networkmessage.DefaultInstance, extensionRegistry);
               break;
             }
           }
@@ -1693,40 +1742,40 @@ namespace JangadaServer {
       }
       
       
-      public pbc::IPopsicleList<global::JangadaServer.NetworkMessage> NetworkmessageList {
+      public pbc::IPopsicleList<global::Jangada.Networkmessage> NetworkmessageList {
         get { return PrepareBuilder().networkmessage_; }
       }
       public int NetworkmessageCount {
         get { return result.NetworkmessageCount; }
       }
-      public global::JangadaServer.NetworkMessage GetNetworkmessage(int index) {
+      public global::Jangada.Networkmessage GetNetworkmessage(int index) {
         return result.GetNetworkmessage(index);
       }
-      public Builder SetNetworkmessage(int index, global::JangadaServer.NetworkMessage value) {
+      public Builder SetNetworkmessage(int index, global::Jangada.Networkmessage value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.networkmessage_[index] = value;
         return this;
       }
-      public Builder SetNetworkmessage(int index, global::JangadaServer.NetworkMessage.Builder builderForValue) {
+      public Builder SetNetworkmessage(int index, global::Jangada.Networkmessage.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.networkmessage_[index] = builderForValue.Build();
         return this;
       }
-      public Builder AddNetworkmessage(global::JangadaServer.NetworkMessage value) {
+      public Builder AddNetworkmessage(global::Jangada.Networkmessage value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.networkmessage_.Add(value);
         return this;
       }
-      public Builder AddNetworkmessage(global::JangadaServer.NetworkMessage.Builder builderForValue) {
+      public Builder AddNetworkmessage(global::Jangada.Networkmessage.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.networkmessage_.Add(builderForValue.Build());
         return this;
       }
-      public Builder AddRangeNetworkmessage(scg::IEnumerable<global::JangadaServer.NetworkMessage> values) {
+      public Builder AddRangeNetworkmessage(scg::IEnumerable<global::Jangada.Networkmessage> values) {
         PrepareBuilder();
         result.networkmessage_.Add(values);
         return this;
@@ -1738,7 +1787,7 @@ namespace JangadaServer {
       }
     }
     static Messages() {
-      object.ReferenceEquals(global::JangadaServer.Networkmessage.Descriptor, null);
+      object.ReferenceEquals(global::Jangada.Proto.Networkmessage.Descriptor, null);
     }
   }
   

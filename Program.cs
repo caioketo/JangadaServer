@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jangada;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,13 @@ namespace JangadaServer
     {
         static TcpServer _server;
         static void Main(string[] args)
-        {            
+        {
             TcpServer.Run(7777, (bytes, client) =>
             {
-                Console.Write(bytes);
                 Messages messages = Messages.CreateBuilder().MergeFrom(bytes).Build();
-                foreach (NetworkMessage message in messages.NetworkmessageList)
+                foreach (Networkmessage message in messages.NetworkmessageList)
                 {
-                    if (!Parser.Parse(message.Type, message))
+                    if (!Parser.Parse(message.Type, message, client))
                     {
                         //Disconnect
                     }

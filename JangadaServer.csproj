@@ -33,10 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.ProtocolBuffers">
-      <HintPath>..\protobuf-csharp-port-2.4.1.521-release-symbols\Release\net40\Google.ProtocolBuffers.dll</HintPath>
+      <HintPath>libs\Google.ProtocolBuffers.dll</HintPath>
     </Reference>
     <Reference Include="Google.ProtocolBuffers.Serialization">
-      <HintPath>..\protobuf-csharp-port-2.4.1.521-release-symbols\Release\net40\Google.ProtocolBuffers.Serialization.dll</HintPath>
+      <HintPath>libs\Google.ProtocolBuffers.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Addressbook.cs" />
     <Compile Include="ClientConnection.cs" />
+    <Compile Include="MessagesHelper.cs" />
     <Compile Include="Networkmessage.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="protos\Networkmessage.proto" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

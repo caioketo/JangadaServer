@@ -1,0 +1,32 @@
+package Jangada;
+
+option optimize_for = SPEED;
+
+message Networkmessage {
+  enum Type {
+    LOGIN = 0;
+	CHARACTERS = 1;
+  }
+
+  required Type type = 1;
+  optional LoginPacket loginPacket = 2;
+  optional CharactersPacket charactersPacket = 3;
+}
+ 
+message LoginPacket {
+  required string login = 1;
+  required string password = 2;
+}
+
+message Character {
+  required int32 id = 1;
+  required string name = 2;
+  required string info = 3;
+}
+message CharactersPacket {
+  repeated Character CharacterList = 1;
+}
+
+message Messages {
+  repeated Networkmessage Networkmessage = 1;
+}
