@@ -6,11 +6,15 @@ message Networkmessage {
   enum Type {
     LOGIN = 0;
 	CHARACTERS = 1;
+	SELECTEDCHAR = 2;
+	CHARACTER_POSITION = 3;
   }
 
   required Type type = 1;
   optional LoginPacket loginPacket = 2;
   optional CharactersPacket charactersPacket = 3;
+  optional SelectCharacterPacket selectCharacterPacket = 4;
+  optional CharacterPositionPacket characterPositionPacket = 5;
 }
  
 message LoginPacket {
@@ -23,8 +27,24 @@ message Character {
   required string name = 2;
   required string info = 3;
 }
+
 message CharactersPacket {
   repeated Character CharacterList = 1;
+}
+
+message SelectCharacterPacket {
+  required int32 id = 1;
+}
+
+message Position {
+  required double x = 1;
+  required double y = 2;
+  required double z = 3;
+}
+
+message CharacterPositionPacket {
+  required int32 mapId = 1;
+  required Position position = 2;
 }
 
 message Messages {

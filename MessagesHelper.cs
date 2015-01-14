@@ -22,5 +22,17 @@ namespace JangadaServer
             Messages messagesToSend = Messages.CreateBuilder().AddNetworkmessage(newMessage.Build()).Build();
             Send(messagesToSend, connection);
         }
+
+        public static void SendCharacterPosition(ClientConnection connection, int mapIndex, Position position)
+        {
+            Networkmessage.Builder newMessage = Networkmessage.CreateBuilder();
+            newMessage.SetType(Networkmessage.Types.Type.CHARACTER_POSITION);
+            newMessage.CharacterPositionPacket = CharacterPositionPacket.CreateBuilder()
+                .SetMapId(mapIndex)
+                .SetPosition(position)
+                .Build();
+            Messages messagesToSend = Messages.CreateBuilder().AddNetworkmessage(newMessage.Build()).Build();
+            Send(messagesToSend, connection);
+        }
     }
 }

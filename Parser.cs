@@ -30,6 +30,14 @@ namespace JangadaServer
                         .Build());
                     MessagesHelper.SendCharacterList(connection, chars);
                     break;
+                case Networkmessage.Types.Type.SELECTEDCHAR:
+                    MessagesHelper.SendCharacterPosition(connection, 1, Position.CreateBuilder()
+                        .SetX(1)
+                        .SetY(1)
+                        .SetZ(1)
+                        .Build());
+                    Console.WriteLine("Selected char id = " + message.SelectCharacterPacket.Id.ToString());
+                    break;
                 default:
                     break;
             }
