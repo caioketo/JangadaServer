@@ -21,6 +21,7 @@ namespace JangadaServer
             return instance;
         }
 
+        public bool useProto = true;
         World World;
 
         public Game()
@@ -40,7 +41,23 @@ namespace JangadaServer
                 }
             }
         }
-
+        internal void OnPlayerMove(Enums.MovementType movementType, float amount, ClientConnection connection)
+        {
+            switch (movementType)
+            {
+                case JangadaServer.Enums.MovementType.FORWARD:
+                    OnPlayerMove(Jangada.RequestMovementPacket.Types.MovementType.FORWARD, amount, connection);
+                    break;
+                case JangadaServer.Enums.MovementType.BACKWARD:
+                    OnPlayerMove(Jangada.RequestMovementPacket.Types.MovementType.BACKWARD, amount, connection);
+                    break;
+                case JangadaServer.Enums.MovementType.YAW:
+                    OnPlayerMove(Jangada.RequestMovementPacket.Types.MovementType.YAW, amount, connection);
+                    break;
+                default:
+                    break;
+            }
+        }
         internal void OnPlayerMove(Jangada.RequestMovementPacket.Types.MovementType movementType, float amount, ClientConnection connection)
         {
             switch (movementType)
