@@ -7,14 +7,24 @@ message Networkmessage {
     LOGIN = 0;
 	CHARACTERS = 1;
 	SELECTEDCHAR = 2;
-	CHARACTER_POSITION = 3;
+	AREA_DESCRIPTION = 3;
+	REQUEST_MOVEMENT = 4;
+	PLAYER_MOVEMENT = 5;
+	PLAYER_LOGIN = 6;
+	CHARACTER_MOVEMENT = 7;
+	PLAYER_LOGOUT = 8;
   }
 
   required Type type = 1;
   optional LoginPacket loginPacket = 2;
   optional CharactersPacket charactersPacket = 3;
   optional SelectCharacterPacket selectCharacterPacket = 4;
-  optional CharacterPositionPacket characterPositionPacket = 5;
+  optional AreaDescriptionPacket areaDescriptionPacket = 5;
+  optional RequestMovementPacket requestMovementPacket = 6;
+  optional PlayerMovementPacket playerMovementPacket = 7;
+  optional PlayerLoginPacket playerLoginPacket = 8;
+  optional CharacterMovementPacket characterMovementPacket = 9;
+  optional PlayerLogoutPacket playerLogoutPacket = 10;
 }
  
 message LoginPacket {
@@ -37,16 +47,58 @@ message SelectCharacterPacket {
 }
 
 message Position {
-  required double x = 1;
-  required double y = 2;
-  required double z = 3;
+  required float x = 1;
+  required float y = 2;
+  required float z = 3;
 }
 
-message CharacterPositionPacket {
-  required int32 mapId = 1;
-  required Position position = 2;
+message QuaternionMessage {
+  required float w = 1;
+  required float x = 2;
+  required float y = 3;
+  required float z = 4;
+}
+
+message RequestMovementPacket {
+  enum MovementType {
+    FORWARD = 1;
+	BACKWARD = 2;
+	YAW = 3;
+  }
+
+  required MovementType movementType = 1;
+  required float ammount = 2;
+}
+
+message AreaDescriptionPacket {
+  required int32 areaId = 1;
+  required PlayerDescription player = 2;
+  repeated PlayerDescription players = 3;
+}
+
+message PlayerDescription {
+  required string playerGuid = 1;
+  required Position playerPosition = 2;
+  required QuaternionMessage playerRotation = 3;
+}
+
+message PlayerLoginPacket {
+  required PlayerDescription player = 1;
+}
+
+message PlayerMovementPacket {
+  required Position newPosition = 1;
+  required QuaternionMessage newRotation = 2;
+}
+
+message CharacterMovementPacket {
+  required PlayerDescription player = 1;
 }
 
 message Messages {
   repeated Networkmessage Networkmessage = 1;
+}
+
+message PlayerLogoutPacket {
+  required string playerGuid = 1;
 }

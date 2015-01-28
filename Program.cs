@@ -16,7 +16,7 @@ namespace JangadaServer
             {
                 Messages messages = Messages.CreateBuilder().MergeFrom(bytes).Build();
                 foreach (Networkmessage message in messages.NetworkmessageList)
-                {
+                { 
                     if (!Parser.Parse(message.Type, message, client))
                     {
                         //Disconnect

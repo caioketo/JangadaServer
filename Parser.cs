@@ -31,12 +31,12 @@ namespace JangadaServer
                     MessagesHelper.SendCharacterList(connection, chars);
                     break;
                 case Networkmessage.Types.Type.SELECTEDCHAR:
-                    MessagesHelper.SendCharacterPosition(connection, 1, Position.CreateBuilder()
-                        .SetX(1)
-                        .SetY(1)
-                        .SetZ(1)
-                        .Build());
+                    Game.GetInstance().OnPlayerLogin(connection);
                     Console.WriteLine("Selected char id = " + message.SelectCharacterPacket.Id.ToString());
+                    break;
+                case Networkmessage.Types.Type.REQUEST_MOVEMENT:
+                    Game.GetInstance().OnPlayerMove(message.RequestMovementPacket.MovementType,
+                        message.RequestMovementPacket.Ammount, connection);
                     break;
                 default:
                     break;
