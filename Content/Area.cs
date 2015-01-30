@@ -10,7 +10,7 @@ namespace JangadaServer.Content
     public class Area
     {
         List<Player> Players = new List<Player>();
-        Terrain Terrain;
+        public Terrain Terrain;
         int Id;
 
         public Area(int id)

@@ -14,31 +14,12 @@ namespace JangadaServer
         {
             TcpServer.Run(7777, (bytes, client) =>
             {
-                if (Game.GetInstance().useProto)
+                Messages messages = Messages.CreateBuilder().MergeFrom(bytes).Build();
+                foreach (Networkmessage message in messages.NetworkmessageList)
                 {
-                    Messages messages = Messages.CreateBuilder().MergeFrom(bytes).Build();
-                    foreach (Networkmessage message in messages.NetworkmessageList)
+                    if (!Parser.Parse(message.Type, message, client))
                     {
-                        if (!Parser.Parse(message.Type, message, client))
-                        {
-                            //Disconnect
-                        }
-                    }
-                }
-                else
-                {
-                    Network.NetworkMessage inMessage = new Network.NetworkMessage(bytes);
-                    int size = (int)BitConverter.ToUInt32(inMessage.Buffer, 0) + 4;
-                    inMessage.Length = size;
-                    inMessage.PrepareToRead();
-
-                    while (inMessage.Position < inMessage.Length - 1)
-                    {
-                        byte type = inMessage.GetByte();
-                        if (!Parser.Parse(type, inMessage, client))
-                        {
-                            //Disconnect
-                        }
+                        //Disconnect
                     }
                 }
             });

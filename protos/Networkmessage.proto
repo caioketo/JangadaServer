@@ -80,6 +80,18 @@ message PlayerDescription {
   required string playerGuid = 1;
   required Position playerPosition = 2;
   required QuaternionMessage playerRotation = 3;
+  optional StatsDescription stats = 4;
+}
+
+message StatsDescription {
+  required int32 CONS = 1;
+  required int32 STR = 2;
+  required int32 INT = 3;
+  required int32 WIS = 4;
+  required int32 DEX = 5;
+
+  required int32 HP = 6;
+  required int32 MP = 7;
 }
 
 message PlayerLoginPacket {
