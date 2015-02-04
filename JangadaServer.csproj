@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,6 +59,7 @@
     <Compile Include="Content\World.cs" />
     <Compile Include="Creatures\Creature.cs" />
     <Compile Include="Creatures\Player.cs" />
+    <Compile Include="Creatures\Spawns\Respawn.cs" />
     <Compile Include="Creatures\Stats.cs" />
     <Compile Include="Enums\ClientMessageType.cs" />
     <Compile Include="Enums\MovementType.cs" />
@@ -88,8 +90,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\HM1.jpg" />
+    <None Include="Resources\HM1.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HM2.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

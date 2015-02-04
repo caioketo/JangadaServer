@@ -9,9 +9,9 @@ namespace JangadaServer
 {
     class Program
     {
-        static TcpServer _server;
         static void Main(string[] args)
         {
+            Game.GetInstance();
             TcpServer.Run(7777, (bytes, client) =>
             {
                 Messages messages = Messages.CreateBuilder().MergeFrom(bytes).Build();

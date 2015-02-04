@@ -1,6 +1,7 @@
 ﻿using Jangada;
 using JangadaServer.Content;
 using JangadaServer.Creatures;
+using JangadaServer.Creatures.Spawns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,29 @@ namespace JangadaServer
         }
 
         public bool useProto = true;
-        World World;
+        public World World;
+        List<Respawn> Respawns = new List<Respawn>();
 
         public Game()
         {
             World = new World();
+            LoadRespawns();
+        }
+
+        private void LoadRespawns()
+        {
+            Respawn resp = new Respawn();
+            resp.AreaId = 1;
+            resp.CreaturesIdToRespawn.Add(1);
+            resp.CreaturesQtyToRespawn.Add(5);
+            resp.Q1 = new Microsoft.Xna.Framework.Vector3(1, 1, 1);
+            resp.Q2 = new Microsoft.Xna.Framework.Vector3(4, 1, 4);
+            resp.RespawnTime = 10000;
+            Respawns.Add(resp);
+            foreach (Respawn respawn in Respawns)
+            {
+                respawn.Run();
+            }
         }
 
         public void OnPlayerLogin(ClientConnection connection)

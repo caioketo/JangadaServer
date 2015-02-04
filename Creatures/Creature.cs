@@ -11,16 +11,27 @@ namespace JangadaServer.Creatures
 {
     public class Creature
     {
+        public int CreatureId;
         public string Guid;
         public Vector3 position = new Vector3(0, 0, 0);
         public Quaternion rotation = Quaternion.Identity;
         public Area area;
         public Stats Stats;
+        public int ModelId = 1;
         public int HP = 500;
         public int MP = 500;
 
         public Creature(Vector3 position)
         {
+            this.CreatureId = 1;
+            this.position = position;
+            this.Guid = Util.generateID();
+            this.Stats = new Stats();
+        }
+
+        public Creature(int creatureId, Vector3 position)
+        {
+            this.CreatureId = 1;
             this.position = position;
             this.Guid = Util.generateID();
             this.Stats = new Stats();
@@ -32,10 +43,10 @@ namespace JangadaServer.Creatures
         {
             Vector3 addVector = Vector3.Transform(new Vector3(0, 0, 1), this.rotation);
             this.position += addVector * speed;
-            if (this.position.Y < area.Terrain.GetHeightAt(this.position))
-            {
-                this.position.Y = area.Terrain.GetHeightAt(this.position);
-            }
+            //if (this.position.Y < area.Terrain.GetHeightAt(this.position))
+            //{
+            //this.position.Y = area.Terrain.GetHeightAt(this.position) + 6.5f;
+            //}
         }
 
         public void MoveBackward(float speed)

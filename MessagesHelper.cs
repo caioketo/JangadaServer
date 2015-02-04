@@ -53,6 +53,19 @@ namespace JangadaServer
             Send(messagesToSend, connection);
         }
 
+        private static StatsDescription AddStatsDescription(Creature creature)
+        {
+            return StatsDescription.CreateBuilder()
+                .SetCONS(creature.Stats.CONS)
+                .SetDEX(creature.Stats.DEX)
+                .SetINT(creature.Stats.INT)
+                .SetWIS(creature.Stats.WIS)
+                .SetSTR(creature.Stats.STR)
+                .SetHP(creature.HP)
+                .SetMP(creature.MP)
+                .Build();
+        }
+
         public static void SendInitialPacket(ClientConnection connection)
         {
             Area area = connection.player.area;
@@ -60,15 +73,7 @@ namespace JangadaServer
                 .SetPlayerGuid(connection.player.Guid)
                 .SetPlayerPosition(connection.player.GetPosition())
                 .SetPlayerRotation(connection.player.GetRotation())
-                .SetStats(StatsDescription.CreateBuilder()
-                .SetCONS(connection.player.Stats.CONS)
-                .SetDEX(connection.player.Stats.DEX)
-                .SetINT(connection.player.Stats.INT)
-                .SetWIS(connection.player.Stats.WIS)
-                .SetSTR(connection.player.Stats.STR)
-                .SetHP(connection.player.HP)
-                .SetMP(connection.player.MP)
-                .Build())
+                .SetStats(AddStatsDescription(connection.player))
                 .Build();
             AreaDescriptionPacket.Builder areaDesc = AreaDescriptionPacket.CreateBuilder();
             areaDesc.SetAreaId(area.GetId());
@@ -81,8 +86,19 @@ namespace JangadaServer
                         .SetPlayerGuid(player.Guid)
                         .SetPlayerPosition(player.GetPosition())
                         .SetPlayerRotation(player.GetRotation())
+                        .SetStats(AddStatsDescription(player))
                         .Build());
                 }
+            }
+            foreach (Creature creature in area.GetCreatures())
+            {
+                areaDesc.AddCreatures(CreatureDescription.CreateBuilder()
+                    .SetCreatureGuid(creature.Guid)
+                    .SetModelId(creature.ModelId)
+                    .SetCreaturePosition(creature.GetPosition())
+                    .SetCreatureRotation(creature.GetRotation())
+                    .SetStats(AddStatsDescription(creature))
+                    .Build());
             }
             Messages messagesToSend = Messages.CreateBuilder().AddNetworkmessage(Networkmessage.CreateBuilder()
                 .SetType(Networkmessage.Types.Type.AREA_DESCRIPTION)

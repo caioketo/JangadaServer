@@ -16,7 +16,7 @@ namespace JangadaServer
         
         public ClientConnection()
         {
-            player = new Player(new Microsoft.Xna.Framework.Vector3(8, 6.5f, -3), this);
+            player = new Player(new Microsoft.Xna.Framework.Vector3(0, 6.5f, 0), this);
         }
     }
 }

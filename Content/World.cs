@@ -14,5 +14,17 @@ namespace JangadaServer.Content
         {
             Areas.Add(new Area(1));
         }
+
+        public Area GetArea(int areaId)
+        {
+            foreach (Area area in Areas)
+            {
+                if (area.GetId() == areaId)
+                {
+                    return area;
+                }
+            }
+            return null;
+        }
     }
 }
