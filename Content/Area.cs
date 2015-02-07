@@ -65,6 +65,7 @@ namespace JangadaServer.Content
         {
             creature.area = this;
             Creatures.Add(creature);
+            Game.GetInstance().OnAddCreature(this, creature);
         }
 
         public void RemvoeCreature(Creature creature)

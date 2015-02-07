@@ -66,15 +66,33 @@ namespace JangadaServer
                 .Build();
         }
 
+        private static SkillsDescription AddSkillsDescription(Skill skill)
+        {
+            return SkillsDescription.CreateBuilder()
+                .SetName(skill.Name)
+                .SetTextureId(skill.TextureId)
+                .SetCoolDown(skill.CoolDown)
+                .SetDistance(skill.Distance)
+                .SetAutoCast(skill.AutoCast)
+                .Build();
+        }
+
         public static void SendInitialPacket(ClientConnection connection)
         {
             Area area = connection.player.area;
-            PlayerDescription playerDesc = PlayerDescription.CreateBuilder()
+            PlayerDescription.Builder playerDescBuilder = PlayerDescription.CreateBuilder()
                 .SetPlayerGuid(connection.player.Guid)
                 .SetPlayerPosition(connection.player.GetPosition())
                 .SetPlayerRotation(connection.player.GetRotation())
-                .SetStats(AddStatsDescription(connection.player))
-                .Build();
+                .SetStats(AddStatsDescription(connection.player));
+
+            foreach (Skill skill in connection.player.Skills)
+            {
+                playerDescBuilder.AddSkills(AddSkillsDescription(skill));
+            }
+
+            PlayerDescription playerDesc = playerDescBuilder.Build();
+
             AreaDescriptionPacket.Builder areaDesc = AreaDescriptionPacket.CreateBuilder();
             areaDesc.SetAreaId(area.GetId());
             areaDesc.SetPlayer(playerDesc);
@@ -131,6 +149,25 @@ namespace JangadaServer
                 .Build())
                 .Build();
 
+            Send(messagesToSend, connection);
+        }
+
+        internal static void SendCreatureRespawn(ClientConnection connection, Creature creature)
+        {
+            Messages messagesToSend = Messages.CreateBuilder()
+                .AddNetworkmessage(Networkmessage.CreateBuilder()
+                .SetType(Networkmessage.Types.Type.CREATURE_RESPAWN)
+                .SetCreatureRespawnPacket(CreatureRespawnPacket.CreateBuilder()
+                .SetCreatureDescription(CreatureDescription.CreateBuilder()
+                .SetCreatureGuid(creature.Guid)
+                .SetModelId(creature.ModelId)
+                .SetCreaturePosition(creature.GetPosition())
+                .SetCreatureRotation(creature.GetRotation())
+                .SetStats(AddStatsDescription(creature))
+                .Build())
+                .Build())
+                .Build())
+                .Build();
             Send(messagesToSend, connection);
         }
     }

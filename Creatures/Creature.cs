@@ -20,6 +20,7 @@ namespace JangadaServer.Creatures
         public int ModelId = 1;
         public int HP = 500;
         public int MP = 500;
+        public List<Skill> Skills = new List<Skill>();
 
         public Creature(Vector3 position)
         {
@@ -45,7 +46,7 @@ namespace JangadaServer.Creatures
             this.position += addVector * speed;
             //if (this.position.Y < area.Terrain.GetHeightAt(this.position))
             //{
-            //this.position.Y = area.Terrain.GetHeightAt(this.position) + 6.5f;
+                //this.position.Y = area.Terrain.GetHeightAt(this.position) + 6.5f;
             //}
         }
 

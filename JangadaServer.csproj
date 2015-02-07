@@ -59,6 +59,7 @@
     <Compile Include="Content\World.cs" />
     <Compile Include="Creatures\Creature.cs" />
     <Compile Include="Creatures\Player.cs" />
+    <Compile Include="Creatures\Skill.cs" />
     <Compile Include="Creatures\Spawns\Respawn.cs" />
     <Compile Include="Creatures\Stats.cs" />
     <Compile Include="Enums\ClientMessageType.cs" />

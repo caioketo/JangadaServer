@@ -38,8 +38,8 @@ namespace JangadaServer
             resp.AreaId = 1;
             resp.CreaturesIdToRespawn.Add(1);
             resp.CreaturesQtyToRespawn.Add(5);
-            resp.Q1 = new Microsoft.Xna.Framework.Vector3(1, 1, 1);
-            resp.Q2 = new Microsoft.Xna.Framework.Vector3(4, 1, 4);
+            resp.Q1 = new Microsoft.Xna.Framework.Vector3(1, 6.5f, 1);
+            resp.Q2 = new Microsoft.Xna.Framework.Vector3(10, 6.5f, 10);
             resp.RespawnTime = 10000;
             Respawns.Add(resp);
             foreach (Respawn respawn in Respawns)
@@ -94,6 +94,14 @@ namespace JangadaServer
                 {
                     MessagesHelper.SendPlayerLogout(player, nplayer.connection);
                 }
+            }
+        }
+
+        internal void OnAddCreature(Area area, Creature creature)
+        {
+            foreach (Player player in area.GetPlayers())
+            {
+                MessagesHelper.SendCreatureRespawn(player.connection, creature);
             }
         }
     }

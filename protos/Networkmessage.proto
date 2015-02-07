@@ -13,6 +13,7 @@ message Networkmessage {
 	PLAYER_LOGIN = 6;
 	CHARACTER_MOVEMENT = 7;
 	PLAYER_LOGOUT = 8;
+	CREATURE_RESPAWN = 9;
   }
 
   required Type type = 1;
@@ -25,6 +26,7 @@ message Networkmessage {
   optional PlayerLoginPacket playerLoginPacket = 8;
   optional CharacterMovementPacket characterMovementPacket = 9;
   optional PlayerLogoutPacket playerLogoutPacket = 10;
+  optional CreatureRespawnPacket creatureRespawnPacket = 11;
 }
  
 message LoginPacket {
@@ -77,12 +79,17 @@ message AreaDescriptionPacket {
   repeated CreatureDescription creatures = 4;
 }
 
+message CreatureRespawnPacket {
+  required CreatureDescription creatureDescription = 1;
+};
+
 message CreatureDescription {
   required string creatureGuid = 1;
   required int32 modelId = 2;
   required Position creaturePosition = 3;
   required QuaternionMessage creatureRotation = 4;
   required StatsDescription stats = 5;
+  repeated SkillsDescription skills = 6;
 }
 
 message PlayerDescription {
@@ -90,6 +97,7 @@ message PlayerDescription {
   required Position playerPosition = 2;
   required QuaternionMessage playerRotation = 3;
   required StatsDescription stats = 4;
+  repeated SkillsDescription skills = 5;
 }
 
 message StatsDescription {
@@ -101,6 +109,14 @@ message StatsDescription {
 
   required int32 HP = 6;
   required int32 MP = 7;
+}
+
+message SkillsDescription {
+  required string Name = 1;
+  required int32 TextureId = 2;
+  required float CoolDown = 3;
+  required float Distance = 4;
+  required bool AutoCast = 5;
 }
 
 message PlayerLoginPacket {

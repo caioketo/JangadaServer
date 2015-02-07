@@ -66,7 +66,7 @@ namespace JangadaServer.Creatures.Spawns
         {
             float x = NextDouble(Q1.X, Q2.X);
             float z = NextDouble(Q1.Z, Q2.Z);
-            return new Vector3(x, 0, z);
+            return new Vector3(x, Q1.Y, z);
         }
 
         public void Run()

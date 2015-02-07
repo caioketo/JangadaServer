@@ -19,6 +19,13 @@ namespace JangadaServer.Creatures
             this.position = position;
             this.Guid = Util.generateID();
             this.Stats = new Stats();
+            Skill skill = new Skill();
+            skill.AutoCast = true;
+            skill.CoolDown = 5;
+            skill.Distance = 5;
+            skill.Name = "Atack";
+            skill.TextureId = 1;
+            this.Skills.Add(skill);
         }
 
     }
